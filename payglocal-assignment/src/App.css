@@ -161,6 +161,10 @@ display: flex;
 justify-content: space-between;
 margin-bottom: 30px;
 }
+.filterApplied{
+    width: 80%;
+    margin: auto;
+}
 @media screen and (min-width: 531px) and (max-width:1024px){
     .footer {
         width: 80%;

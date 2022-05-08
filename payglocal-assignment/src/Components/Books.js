@@ -139,12 +139,7 @@ arr.push(data[i].price)
         <button className="filterBtn" onClick={handleFilter} onMouseEnter={handleHover} onMouseLeave={handleLeave}>
           ({count}) Filters
         </button>
-        {
-              showFilter?<div className="filterApplied">
-                  <p className="priceFilter">Max Price: {slider}</p>
-                  <p className="ranteFilter">Rating: {rangeDrop} and above</p>
-              </div>:""
-          }
+        
         </div>
         <form onSubmit={handleClick}>
           <input
@@ -156,6 +151,12 @@ arr.push(data[i].price)
           <FaSearch className="searchIcon" />
         </form>
       </div>
+      {
+              showFilter?<div className="filterApplied">
+                  <p className="priceFilter">Max Price: {slider}</p>
+                  <p className="ranteFilter">Rating: {rangeDrop} and above</p>
+              </div>:""
+          }
       <div className="container">
         {data.filter((val)=>{
             if(val.rating>=rangeDrop){
