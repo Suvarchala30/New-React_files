@@ -29,24 +29,26 @@ const Books = () => {
     }
 
   });
+  //Fetching URL
   const fetchUrl = async () => {
     const response = await fetch(url);
     const receivedData = await response.json();
     setData(receivedData);
-    
-    //console.log(receivedData)
   };
-
+//Getting search value
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
+  //Preventing on submit of form
   const handleClick = (e) => {
     e.preventDefault();
   };
+  //get dropdown values for per page items
   const handleDropDown = (e) => {
     setDropValue(e.target.value);
     setendIndex(Number(startIndex) + Number(e.target.value));
   };
+  //next page button handling
   const handleNext = () => {
     setPrevDisable(false);
     setNextDisable(false);
@@ -54,8 +56,6 @@ const Books = () => {
         setNextDisable(true)
     }
     setStartIndex(endIndex);
-//     console.log("startIndex" , endIndex)
-// console.log("Endindex",endIndex+dropValue)
     setendIndex(Number(endIndex) + Number(dropValue));
     if (endIndex > 54 || startIndex>54-(2*dropValue) ) {
       setNextDisable(true);
@@ -64,7 +64,7 @@ const Books = () => {
       setendIndex(54);
     }
   };
-
+//previous page button handling
   const handlePrevious = () => {
     setPrevDisable(false);
     setNextDisable(false);
@@ -78,24 +78,27 @@ const Books = () => {
       setendIndex(dropValue);
     }
   };
+  //Filter popup
   const handleFilter = () => {
     setBtnTrigger(!btnTrigger);
 
   getPrices();
   };
+  //Price range toggle
   const handlePriceRange = (e) => {
     e.preventDefault();
     setShowPrice(!showPrice);
 
   };
   const PriceRange = (e) => {
-    //console.log(e.target.value);
+   
     setSlider(e.target.value)
     if(count<2){
         setCount(count+1)
     }
     
   };
+  //Get min and max prices from API
   const getPrices=(()=>{
    let arr=[]
    for(let i=0;i<data.length;i++){
@@ -105,32 +108,35 @@ arr.push(data[i].price)
    const min=Math.min(...arr)
    
    const max=Math.max(...arr)
-   setMinPrice(min)
-   setMaxPrice(max)
+   setMinPrice(min.toFixed(2))
+   setMaxPrice(max.toFixed(2))
   })
-
+//Handle apply button on click apply filters
   const handleApply=(()=>{
      console.log(slider)
      console.log(rangeDrop)
       setBtnTrigger(!btnTrigger);
       
   })
+  //toggle ratings
   const handleShowRange=(()=>{
       setShowRange(!showRange)
   })
+  //get ratings value to be filtered
   const handleRatingRange=((e)=>{
     setRangeDrop(e.target.value)
     if(count<2){
         setCount(count+1)
     }
   })
+  //hover filter
   const handleHover=(()=>{
     setShowFilter(!showFilter)
   })
   const handleLeave=(()=>{
       setShowFilter(!showFilter)
   })
-  //console.log(slider)
+  
   return (
     <div className="Books">
       <div className="header">
