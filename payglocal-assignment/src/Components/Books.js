@@ -20,6 +20,7 @@ const Books = () => {
   const [rangeDrop,setRangeDrop]=useState(1)
   const [count,setCount]=useState(0)
   const [showFilter,setShowFilter]=useState(false)
+  const [inputRange,setInputRange]=useState(19)
   const url =
     "https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline";
   useEffect(() => {
@@ -88,10 +89,11 @@ const Books = () => {
   const handlePriceRange = (e) => {
     e.preventDefault();
     setShowPrice(!showPrice);
+    
 
   };
   const PriceRange = (e) => {
-   
+    setInputRange(e.target.value)
     setSlider(e.target.value)
     if(count<2){
         setCount(count+1)
@@ -103,13 +105,14 @@ const Books = () => {
    let arr=[]
    for(let i=0;i<data.length;i++){
 arr.push(data[i].price)
+//arr.push(Number(data[i].price)+1000 )
       
    }
    const min=Math.min(...arr)
    
    const max=Math.max(...arr)
-   setMinPrice(min.toFixed(2))
-   setMaxPrice(max.toFixed(2))
+   setMinPrice(min)
+   setMaxPrice(max)
   })
 //Handle apply button on click apply filters
   const handleApply=(()=>{
@@ -174,14 +177,9 @@ arr.push(data[i].price)
 
             
         })
-        .filter((val)=>{
-            if(slider>=val.price){
-                return val
-            }else {
-                return null
-            }
-        })
-
+        
+        .filter(val => { return val.price < parseInt(slider,10)})
+        
           .filter((val) => {
             if (search === "") {
               return val;
@@ -214,6 +212,7 @@ arr.push(data[i].price)
                   </p>
                   <p className="itemPrice">
                     <span className="title">INR: </span>
+                    {/* {Math.floor(Number(item.price)+1000)} */}
                     {item.price}
                   </p>
                   <p className="itemType">
@@ -270,7 +269,7 @@ arr.push(data[i].price)
             {showPrice ? (
                 <div className="rangeSection">
                     <div>
-              <input type="range" min={minPrice} max={maxPrice} onChange={PriceRange} />
+              <input type="range" min={minPrice} max={maxPrice} onChange={PriceRange} value={inputRange}/>
               </div>
               <div className="priceDisplay">
               <span className="minDis">Min: {minPrice}</span>
