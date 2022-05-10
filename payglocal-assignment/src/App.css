@@ -188,6 +188,8 @@ margin-bottom: 30px;
         height: 250px;
     }
     .bookBlock {
+        background-color: blueviolet;
+        color: white;
         display: flex;
         width: 80%;
         justify-content: space-between;
