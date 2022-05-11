@@ -16,3 +16,4 @@ function App() {
 }
 
 export default App;
+//in value always give 2 flower brackets {{}}
