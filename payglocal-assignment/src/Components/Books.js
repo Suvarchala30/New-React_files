@@ -34,6 +34,7 @@ const Books = () => {
     const response = await fetch(url);
     const receivedData = await response.json();
     setData(receivedData);
+    //console.log(receivedData)
   };
   //Getting search value
   const handleChange = (e) => {
@@ -108,12 +109,14 @@ const Books = () => {
     const max = Math.max(...arr);
     setMinPrice(min);
     setMaxPrice(max);
+   
   };
   //Handle apply button on click apply filters
   const handleApply = () => {
     console.log(slider);
     console.log(rangeDrop);
     setBtnTrigger(!btnTrigger);
+    
   };
   //toggle ratings
   const handleShowRange = () => {
