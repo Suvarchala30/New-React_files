@@ -53,6 +53,7 @@ const Read = (()=>{
     
   </tbody>
 </Table>
+<Link to = "/"><Button> Back to create data</Button></Link>
         </div>
     )
 })
