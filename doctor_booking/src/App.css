@@ -32,3 +32,7 @@ input[type="radio"] {
 .radioBtn:hover{
   color:darkorange;
 }
+button.radioBtn:focus {
+  background:steelblue;
+  color: white;
+}
