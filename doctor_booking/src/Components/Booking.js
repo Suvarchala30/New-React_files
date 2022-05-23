@@ -5,7 +5,7 @@ const Booking = (()=>{
     const [noOfDoctors,setNoOfDoctors]=useState(0)
     const [slotDisplay,setSlotDisplay]=useState(false)
     const [slotTime,setSlotTime]=useState()
-    
+    const [arr,setArr]=useState([])
     const handleInput=((e)=>{
         setNoOfDoctors(e.target.value)
         //console.log(e.target.value)
@@ -14,14 +14,11 @@ const Booking = (()=>{
     useEffect(()=>{
         setNoOfDoctors(noOfDoctors)
     })
-   const handleMorning=(()=>{
-    setSlotTime("Morning")
-   })
-   const handleAfternoon = (()=>{
-    setSlotTime("Afternoon")
-   })
-   const handleEvening=(()=>{
-    setSlotTime("Evening")
+   
+   const handleSlots=((value)=>{
+       
+       setArr(arr.concat({slot:value}))
+        console.log(value)
    })
     return(
         <div className="booking">
@@ -38,13 +35,13 @@ const Booking = (()=>{
                     return(
                         <div className="itemDisplay" key={index}>
                             <h3 className="doctorname">{item.name}</h3>
-                            <button className="radioBtn"  onClick={handleMorning}>
+                            <button className="radioBtn"  onClick={()=>handleSlots("Morning")}>
                             <input type="radio" value="Morning" name="slot"/>Morning
                             </button>
-                            <button className="radioBtn"  onClick={handleAfternoon}>
+                            <button className="radioBtn"  onClick={()=>handleSlots("Afternoon")}>
                             <input type="radio" value="Afternoon" name="slot"/>Afternoon
                             </button>
-                            <button className="radioBtn"  onClick={handleEvening}>
+                            <button className="radioBtn"  onClick={()=>handleSlots("Evening")}>
                             <input type="radio" value="Evening" name="slot"/>Evening
                             </button> 
                            
@@ -57,16 +54,17 @@ const Booking = (()=>{
                 })
             }
             {
-                Data
-                .filter((item)=>{
-                    if(item.id<=noOfDoctors){
-                        return item
-                    }
-                })
-                .map((item,index)=>{
+                // Data
+                // .filter((item)=>{
+                //     if(item.id<=noOfDoctors){
+                //         return item
+                //     }
+                // })
+                arr.map((item,index)=>{
                     return(
                         <div className="resultApp" key={index}>
-                            <h3 className="booking">{item.name} : {slotTime}</h3>
+                           
+                            <h3 className="booking"> {item.slot}</h3>
                         </div>
                     )
                 })

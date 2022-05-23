@@ -1,13 +1,13 @@
-button.slotBlock:focus {
+/* button.slotBlock:focus {
   background:steelblue;
   color:white;
   border:1px solid steelblue;
   margin:3px;
-}
+} */
 .slotsAvailable {
   margin: 20px;
 }
-.slotBlock {
+/* .slotBlock {
   margin: 3px;
   border: 1px solid steelblue;
   padding: 5px 10px;
@@ -16,7 +16,7 @@ button.slotBlock:focus {
 }
 .slotBlock:hover {
   color:darkorange;
-}
+} */
 
 input[type="radio"] {
   -webkit-appearance: none;
