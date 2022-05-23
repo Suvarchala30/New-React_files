@@ -35,19 +35,13 @@ const Booking = (()=>{
                     return(
                         <div className="itemDisplay" key={index}>
                             <h3 className="doctorname">{item.name}</h3>
-                            <button className="radioBtn"  onClick={()=>handleSlots("Morning")}>
+                            
                             <input type="radio" value="Morning" name="slot"/>Morning
-                            </button>
-                            <button className="radioBtn"  onClick={()=>handleSlots("Afternoon")}>
-                            <input type="radio" value="Afternoon" name="slot"/>Afternoon
-                            </button>
-                            <button className="radioBtn"  onClick={()=>handleSlots("Evening")}>
-                            <input type="radio" value="Evening" name="slot"/>Evening
-                            </button> 
                            
-                            {/* <button className="slotBlock" onClick={handleMorning}>Morning</button>
-            <button className="slotBlock" onClick={handleAfternoon}>Afternoon</button>
-        <button className="slotBlock" onClick={handleEvening}>Evening</button>  */}
+                            <input type="radio" value="Afternoon" name="slot"/>Afternoon
+                                                     
+                            <input type="radio" value="Evening" name="slot"/>Evening
+                            
                             <br />
                         </div>
                     )

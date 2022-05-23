@@ -31,3 +31,8 @@ function apply1(state,country,zip,phone,marks1,marks2){
     console.log(this.name + " is from " + this.city + " from state " + state + " " +country+" "+zip +" "+phone+" "+marks1+" "+marks2)
 }
 apply1.apply(obj,["Telangana","India","501510","8916785431","98","87"])
+
+
+console.log(1<2<3)
+console.log(3>2>1)
+console.log(0.1+0.2 === 0.3)
